@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: wechat-backend
+    env: java
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -Dserver.port=$PORT -jar target/wechat-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_USERNAME
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: SPRING_PROFILES_ACTIVE
+        value: production
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: SHOW_SQL
+        value: false
