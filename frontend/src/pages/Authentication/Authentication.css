@@ -1,0 +1,519 @@
+/* Authentication Page Animations */
+
+.auth-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(102, 126, 234, 0.8), rgba(118, 75, 162, 0.8));
+  animation: gradientShift 10s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Enhanced floating particles covering entire page */
+.floating-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: float linear infinite;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.particle:nth-child(odd) {
+  background: rgba(88, 199, 250, 0.4);
+  box-shadow: 0 0 15px rgba(88, 199, 250, 0.5);
+}
+
+.particle:nth-child(3n) {
+  background: rgba(255, 255, 255, 0.8);
+  animation-direction: reverse;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) rotate(36deg) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(10vh) rotate(324deg) scale(1);
+  }
+  100% {
+    transform: translateY(-10vh) rotate(360deg) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Unified merged layout */
+.unified-auth-layout {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background image section spanning full screen */
+.background-image-section {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(1.1) contrast(1.1) saturate(1.2);
+  transition: all 0.3s ease;
+}
+
+.image-loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.4), rgba(118, 75, 162, 0.4));
+  z-index: 3;
+}
+
+/* Hero text overlay positioned on left side */
+.hero-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 15%;
+  transform: translateY(-50%);
+  text-align: left;
+  color: white;
+  z-index: 4;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.8rem;
+  font-weight: 300;
+  opacity: 0.9;
+  line-height: 1.3;
+}
+
+/* Form overlay positioned on right side */
+.form-overlay-section {
+  position: absolute;
+  top: 50%;
+  right: 8%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 400px;
+  max-width: 90vw;
+}
+
+.auth-card-merged {
+  background: rgba(25, 28, 41, 0.85) !important;
+  backdrop-filter: blur(30px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(30px) saturate(150%) !important;
+  border: 1px solid rgba(88, 199, 250, 0.3) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 20px !important;
+  transition: all 0.3s ease !important;
+  position: relative;
+  overflow: visible !important;
+  padding: 2rem 2rem 2rem 2rem !important;
+}
+
+.auth-card-merged::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(88, 199, 250, 0.1), rgba(255, 255, 255, 0.05));
+  z-index: -1;
+  border-radius: inherit;
+}
+
+.auth-card-merged:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.6) !important;
+  border-color: rgba(88, 199, 250, 0.5) !important;
+  backdrop-filter: blur(35px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(35px) saturate(180%) !important;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
+}
+
+.form-header h1 {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+  padding-top: 0.5rem;
+}
+
+.form-header h4 {
+  font-size: 1rem;
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Image indicators positioned at bottom center */
+.image-indicators {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 4;
+}
+
+.indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.indicator.active {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(88, 199, 250, 0.8);
+  box-shadow: 0 0 15px rgba(88, 199, 250, 0.6);
+}
+
+.indicator:hover {
+  background: rgba(255, 255, 255, 0.7);
+  transform: scale(1.3);
+}
+
+/* Ken Burns effect for images */
+@keyframes kenBurns {
+  0% {
+    transform: scale(1) translateX(0) translateY(0);
+  }
+  25% {
+    transform: scale(1.08) translateX(-1%) translateY(-0.5%);
+  }
+  50% {
+    transform: scale(1.05) translateX(0.5%) translateY(-1%);
+  }
+  75% {
+    transform: scale(1.07) translateX(-0.5%) translateY(0.5%);
+  }
+  100% {
+    transform: scale(1) translateX(0) translateY(0);
+  }
+}
+
+.logo-animated {
+  background: linear-gradient(45deg, #58c7fa, #ffffff, #58c7fa);
+  background-size: 100% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: logoGlow 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes logoGlow {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.logo-animated:hover {
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.form-container {
+  animation: slideIn 0.6s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tagline {
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enhanced button animations */
+.auth-card-merged .MuiButton-root {
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(45deg, #58c7fa, #667eea) !important;
+  border-radius: 25px !important;
+  padding: 12px 30px !important;
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  letter-spacing: 1px !important;
+}
+
+.auth-card-merged .MuiButton-root:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(88, 199, 250, 0.4);
+}
+
+.auth-card-merged .MuiButton-root::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.auth-card-merged .MuiButton-root:hover::before {
+  left: 100%;
+}
+
+/* Text field animations */
+.auth-card-merged .MuiTextField-root {
+  animation: fadeIn 0.6s ease-out;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem !important;
+}
+
+.auth-card-merged .MuiTextField-root:hover {
+  transform: translateY(-1px);
+}
+
+.auth-card-merged .MuiOutlinedInput-root {
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.auth-card-merged .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(88, 199, 250, 0.8) !important;
+  box-shadow: 0 0 15px rgba(88, 199, 250, 0.3);
+}
+
+.auth-card-merged .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(88, 199, 250, 1) !important;
+  box-shadow: 0 0 20px rgba(88, 199, 250, 0.4);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Loading spinner enhancement */
+.loading-container {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Success alert animation */
+.success-alert {
+  animation: slideInFromTop 0.5s ease-out;
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .form-overlay-section {
+    width: 350px;
+    right: 5%;
+  }
+}
+
+@media (max-width: 968px) {
+  .unified-auth-layout {
+    flex-direction: column;
+    padding: 2rem;
+  }
+    .hero-text-overlay {
+    position: static;
+    transform: none;
+    text-align: center;
+    margin-bottom: 2rem;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .form-overlay-section {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .background-image-section {
+    position: fixed;
+  }
+  
+  .image-indicators {
+    bottom: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-particles {
+    display: block;
+  }
+  
+  .particle {
+    width: 3px !important;
+    height: 3px !important;
+  }
+  
+  .auth-card-merged {
+    margin: 1rem;
+    padding: 1.5rem !important;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-overlay-section {
+    width: 95%;
+  }
+  
+  .hero-text-overlay {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .unified-auth-layout {
+    padding: 1rem;
+  }
+}
