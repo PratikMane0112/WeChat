@@ -177,11 +177,8 @@ task test:integration    # End-to-end testing
 
 ## 👨‍💻 Author
 
-**Pratik Mane** - Full-Stack Developer & DevOps Engineer
-- 🌐 Portfolio: [pratikmane.dev](https://pratikmane.dev)
-- 💼 LinkedIn: [linkedin.com/in/pratikmane0112](https://linkedin.com/in/pratikmane0112)
+**Pratik Mane** 
 - 🐙 GitHub: [@PratikMane0112](https://github.com/PratikMane0112)
-- 📧 Email: pratik.mane0112@gmail.com
 
 ---
 
