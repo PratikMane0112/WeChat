@@ -1,0 +1,397 @@
+<svg width="1600" height="1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="devGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976D2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1565C0;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="ciGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#388E3C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="cdGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F57C00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#EF6C00;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="monitorGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B1FA2;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A1B9A;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Drop shadow -->
+    <filter id="dropshadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="2" stdDeviation="3" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1600" height="1000" fill="#f8f9fa"/>
+  
+  <!-- Title -->
+  <text x="800" y="40" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1a1a1a">
+    WeChat Platform - Complete DevOps Pipeline Architecture
+  </text>
+  
+  <!-- Development Phase -->
+  <g id="development">
+    <rect x="50" y="80" width="300" height="200" rx="15" fill="url(#devGradient)" filter="url(#dropshadow)"/>
+    <text x="200" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">👨‍💻 Development Phase</text>
+    
+    <!-- Developer -->
+    <circle cx="120" cy="150" r="25" fill="white"/>
+    <text x="120" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1976D2">👨‍💻</text>
+    <text x="120" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Developer</text>
+    <text x="120" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Local Dev</text>
+    
+    <!-- IDE -->
+    <circle cx="200" cy="150" r="25" fill="white"/>
+    <text x="200" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1976D2">💻</text>
+    <text x="200" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">VS Code</text>
+    <text x="200" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">IntelliJ</text>
+    
+    <!-- Git -->
+    <circle cx="280" cy="150" r="25" fill="white"/>
+    <text x="280" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#1976D2">📚</text>
+    <text x="280" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Git</text>
+    <text x="280" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Version Control</text>
+    
+    <!-- Development Tools -->
+    <text x="70" y="225" font-family="Arial, sans-serif" font-size="9" fill="white">• Spring Boot DevTools</text>
+    <text x="70" y="240" font-family="Arial, sans-serif" font-size="9" fill="white">• React Hot Reload</text>
+    <text x="70" y="255" font-family="Arial, sans-serif" font-size="9" fill="white">• Docker Compose</text>
+    <text x="200" y="225" font-family="Arial, sans-serif" font-size="9" fill="white">• PostgreSQL Local</text>
+    <text x="200" y="240" font-family="Arial, sans-serif" font-size="9" fill="white">• Redis Local</text>
+    <text x="200" y="255" font-family="Arial, sans-serif" font-size="9" fill="white">• Task Runner</text>
+  </g>
+  
+  <!-- Source Control -->
+  <g id="sourceControl">
+    <rect x="400" y="80" width="280" height="200" rx="15" fill="#24292e" filter="url(#dropshadow)"/>
+    <text x="540" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">📚 Source Control</text>
+    
+    <!-- GitHub -->
+    <circle cx="470" cy="150" r="25" fill="white"/>
+    <text x="470" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#24292e">📚</text>
+    <text x="470" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">GitHub</text>
+    <text x="470" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Repository</text>
+    
+    <!-- Branch Strategy -->
+    <circle cx="540" cy="150" r="25" fill="white"/>
+    <text x="540" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#24292e">🌿</text>
+    <text x="540" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">GitFlow</text>
+    <text x="540" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Branching</text>
+    
+    <!-- PR/MR -->
+    <circle cx="610" cy="150" r="25" fill="white"/>
+    <text x="610" y="155" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#24292e">🔀</text>
+    <text x="610" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Pull</text>
+    <text x="610" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Requests</text>
+    
+    <!-- Git Features -->
+    <text x="420" y="225" font-family="Arial, sans-serif" font-size="9" fill="white">• Feature Branches</text>
+    <text x="420" y="240" font-family="Arial, sans-serif" font-size="9" fill="white">• Code Reviews</text>
+    <text x="420" y="255" font-family="Arial, sans-serif" font-size="9" fill="white">• Merge Protection</text>
+    <text x="550" y="225" font-family="Arial, sans-serif" font-size="9" fill="white">• Semantic Commits</text>
+    <text x="550" y="240" font-family="Arial, sans-serif" font-size="9" fill="white">• Auto Tagging</text>
+    <text x="550" y="255" font-family="Arial, sans-serif" font-size="9" fill="white">• Release Notes</text>
+  </g>
+  
+  <!-- CI Pipeline -->
+  <g id="ciPipeline">
+    <rect x="50" y="320" width="630" height="280" rx="15" fill="url(#ciGradient)" filter="url(#dropshadow)"/>
+    <text x="365" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">🔧 Continuous Integration (CI) Pipeline</text>
+    
+    <!-- Jenkins -->
+    <circle cx="120" cy="400" r="30" fill="white"/>
+    <text x="120" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#D33833">🔧</text>
+    <text x="120" y="435" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">Jenkins</text>
+    <text x="120" y="450" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="white">Master</text>
+    
+    <!-- Build Stage -->
+    <rect x="200" y="370" width="100" height="80" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="250" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🏗️ Build</text>
+    <text x="250" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Maven</text>
+    <text x="250" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">npm build</text>
+    <text x="250" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Compile</text>
+    
+    <!-- Test Stage -->
+    <rect x="320" y="370" width="100" height="80" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="370" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🧪 Test</text>
+    <text x="370" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">JUnit 5</text>
+    <text x="370" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Mockito</text>
+    <text x="370" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">80% Coverage</text>
+    
+    <!-- Security Scan -->
+    <rect x="440" y="370" width="100" height="80" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="490" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🔒 Security</text>
+    <text x="490" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">OWASP</text>
+    <text x="490" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">SonarQube</text>
+    <text x="490" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Snyk</text>
+    
+    <!-- Quality Gate -->
+    <rect x="560" y="370" width="100" height="80" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="610" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">✅ Quality</text>
+    <text x="610" y="410" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Code Quality</text>
+    <text x="610" y="425" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Coverage Gate</text>
+    <text x="610" y="440" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Lint Rules</text>
+    
+    <!-- Docker Build -->
+    <rect x="200" y="480" width="120" height="80" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="260" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🐳 Docker</text>
+    <text x="260" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Multi-stage</text>
+    <text x="260" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Optimization</text>
+    <text x="260" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Alpine Linux</text>
+    
+    <!-- Artifact Storage -->
+    <rect x="340" y="480" width="120" height="80" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="400" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">📦 Artifacts</text>
+    <text x="400" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">AWS ECR</text>
+    <text x="400" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Versioning</text>
+    <text x="400" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Scanning</text>
+    
+    <!-- Notification -->
+    <rect x="480" y="480" width="120" height="80" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="540" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">📢 Notify</text>
+    <text x="540" y="520" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Slack</text>
+    <text x="540" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Email</text>
+    <text x="540" y="550" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">GitHub Status</text>
+  </g>
+  
+  <!-- CD Pipeline -->
+  <g id="cdPipeline">
+    <rect x="720" y="80" width="400" height="520" rx="15" fill="url(#cdGradient)" filter="url(#dropshadow)"/>
+    <text x="920" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">🚀 Continuous Deployment (CD)</text>
+    
+    <!-- Staging Environment -->
+    <rect x="750" y="140" width="150" height="120" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="825" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🧪 Staging</text>
+    <text x="825" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ECS Staging</text>
+    <text x="825" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Integration Tests</text>
+    <text x="825" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">E2E Testing</text>
+    <text x="825" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Performance</text>
+    <text x="825" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Load Testing</text>
+    
+    <!-- Production Environment -->
+    <rect x="950" y="140" width="150" height="120" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="1025" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🌟 Production</text>
+    <text x="1025" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">ECS Production</text>
+    <text x="1025" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Blue-Green</text>
+    <text x="1025" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Auto-scaling</text>
+    <text x="1025" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Load Balancer</text>
+    <text x="1025" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white">Health Checks</text>
+    
+    <!-- Infrastructure -->
+    <rect x="750" y="290" width="340" height="120" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="920" y="310" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">🏗️ Infrastructure as Code</text>
+    
+    <!-- Terraform -->
+    <circle cx="800" cy="350" r="20" fill="white"/>
+    <text x="800" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#7B42BC">🏗️</text>
+    <text x="800" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Terraform</text>
+    <text x="800" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Modules</text>
+    
+    <!-- CloudFormation -->
+    <circle cx="880" cy="350" r="20" fill="white"/>
+    <text x="880" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#FF9900">☁️</text>
+    <text x="880" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">CloudForm</text>
+    <text x="880" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Templates</text>
+    
+    <!-- Ansible -->
+    <circle cx="960" cy="350" r="20" fill="white"/>
+    <text x="960" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#EE0000">⚙️</text>
+    <text x="960" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Ansible</text>
+    <text x="960" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Config</text>
+    
+    <!-- Task Runner -->
+    <circle cx="1040" cy="350" r="20" fill="white"/>
+    <text x="1040" y="355" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#29BF12">📋</text>
+    <text x="1040" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Task</text>
+    <text x="1040" y="390" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Automation</text>
+    
+    <!-- Deployment Strategies -->
+    <rect x="750" y="440" width="340" height="120" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="920" y="460" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">🎯 Deployment Strategies</text>
+    
+    <text x="770" y="485" font-family="Arial, sans-serif" font-size="10" fill="white">• Blue-Green Deployment</text>
+    <text x="770" y="500" font-family="Arial, sans-serif" font-size="10" fill="white">• Canary Releases</text>
+    <text x="770" y="515" font-family="Arial, sans-serif" font-size="10" fill="white">• Rolling Updates</text>
+    <text x="770" y="530" font-family="Arial, sans-serif" font-size="10" fill="white">• Feature Flags</text>
+    <text x="770" y="545" font-family="Arial, sans-serif" font-size="10" fill="white">• Rollback Strategy</text>
+    
+    <text x="950" y="485" font-family="Arial, sans-serif" font-size="10" fill="white">• Health Monitoring</text>
+    <text x="950" y="500" font-family="Arial, sans-serif" font-size="10" fill="white">• Auto-scaling Policies</text>
+    <text x="950" y="515" font-family="Arial, sans-serif" font-size="10" fill="white">• Circuit Breakers</text>
+    <text x="950" y="530" font-family="Arial, sans-serif" font-size="10" fill="white">• Chaos Engineering</text>
+    <text x="950" y="545" font-family="Arial, sans-serif" font-size="10" fill="white">• Disaster Recovery</text>
+  </g>
+  
+  <!-- Monitoring & Observability -->
+  <g id="monitoring">
+    <rect x="1160" y="80" width="390" height="520" rx="15" fill="url(#monitorGradient)" filter="url(#dropshadow)"/>
+    <text x="1355" y="110" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">📊 Monitoring & Observability</text>
+    
+    <!-- Metrics -->
+    <rect x="1180" y="140" width="160" height="100" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="1260" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">📈 Metrics</text>
+    <text x="1260" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">CloudWatch</text>
+    <text x="1260" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Prometheus</text>
+    <text x="1260" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Custom Metrics</text>
+    <text x="1260" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Business KPIs</text>
+    
+    <!-- Logging -->
+    <rect x="1360" y="140" width="160" height="100" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="1440" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">📝 Logging</text>
+    <text x="1440" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">CloudWatch Logs</text>
+    <text x="1440" y="195" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">ELK Stack</text>
+    <text x="1440" y="210" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Structured Logs</text>
+    <text x="1440" y="225" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Log Aggregation</text>
+    
+    <!-- Tracing -->
+    <rect x="1180" y="260" width="160" height="100" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="1260" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🔍 Tracing</text>
+    <text x="1260" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">AWS X-Ray</text>
+    <text x="1260" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Jaeger</text>
+    <text x="1260" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Distributed</text>
+    <text x="1260" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Request Flow</text>
+    
+    <!-- Alerting -->
+    <rect x="1360" y="260" width="160" height="100" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="1440" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🚨 Alerting</text>
+    <text x="1440" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">PagerDuty</text>
+    <text x="1440" y="315" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Slack Integration</text>
+    <text x="1440" y="330" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">SMS/Email</text>
+    <text x="1440" y="345" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Escalation</text>
+    
+    <!-- Dashboards -->
+    <rect x="1180" y="380" width="340" height="120" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="1350" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="white">📊 Visualization Dashboards</text>
+    
+    <!-- Grafana -->
+    <circle cx="1230" cy="440" r="20" fill="white"/>
+    <text x="1230" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#F46800">📈</text>
+    <text x="1230" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Grafana</text>
+    <text x="1230" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Analytics</text>
+    
+    <!-- Kibana -->
+    <circle cx="1310" cy="440" r="20" fill="white"/>
+    <text x="1310" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#005571">📊</text>
+    <text x="1310" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Kibana</text>
+    <text x="1310" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Log Search</text>
+    
+    <!-- CloudWatch Dashboard -->
+    <circle cx="1390" cy="440" r="20" fill="white"/>
+    <text x="1390" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#FF9900">☁️</text>
+    <text x="1390" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">CloudWatch</text>
+    <text x="1390" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">AWS Native</text>
+    
+    <!-- Custom Dashboard -->
+    <circle cx="1470" cy="440" r="20" fill="white"/>
+    <text x="1470" y="445" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#4285F4">📱</text>
+    <text x="1470" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Custom</text>
+    <text x="1470" y="480" text-anchor="middle" font-family="Arial, sans-serif" font-size="9" fill="white">Business</text>
+    
+    <!-- SLIs/SLOs -->
+    <rect x="1180" y="520" width="340" height="60" rx="10" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="2"/>
+    <text x="1350" y="540" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white">🎯 SLIs & SLOs</text>
+    <text x="1200" y="560" font-family="Arial, sans-serif" font-size="9" fill="white">• 99.9% Uptime SLA</text>
+    <text x="1200" y="570" font-family="Arial, sans-serif" font-size="9" fill="white">• <200ms Response Time</text>
+    <text x="1380" y="560" font-family="Arial, sans-serif" font-size="9" fill="white">• Error Rate <0.1%</text>
+    <text x="1380" y="570" font-family="Arial, sans-serif" font-size="9" fill="white">• 99.95% Data Consistency</text>
+  </g>
+  
+  <!-- Flow Arrows -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    
+    <marker id="whiteArrow" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="white"/>
+    </marker>
+  </defs>
+  
+  <!-- Dev to Source Control -->
+  <path d="M 350 180 L 400 180" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Source Control to CI -->
+  <path d="M 540 280 L 365 320" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- CI Pipeline Internal Flow -->
+  <path d="M 150 400 L 200 410" stroke="white" stroke-width="2" fill="none" marker-end="url(#whiteArrow)"/>
+  <path d="M 300 410 L 320 410" stroke="white" stroke-width="2" fill="none" marker-end="url(#whiteArrow)"/>
+  <path d="M 420 410 L 440 410" stroke="white" stroke-width="2" fill="none" marker-end="url(#whiteArrow)"/>
+  <path d="M 540 410 L 560 410" stroke="white" stroke-width="2" fill="none" marker-end="url(#whiteArrow)"/>
+  <path d="M 250 450 L 250 480" stroke="white" stroke-width="2" fill="none" marker-end="url(#whiteArrow)"/>
+  <path d="M 320 520 L 340 520" stroke="white" stroke-width="2" fill="none" marker-end="url(#whiteArrow)"/>
+  <path d="M 460 520 L 480 520" stroke="white" stroke-width="2" fill="none" marker-end="url(#whiteArrow)"/>
+  
+  <!-- CI to CD -->
+  <path d="M 680 460 L 720 360" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- CD to Monitoring -->
+  <path d="M 1120 360 L 1160 320" stroke="#333" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Performance Metrics -->
+  <g id="performanceMetrics">
+    <rect x="50" y="640" width="1500" height="120" rx="15" fill="#263238" filter="url(#dropshadow)"/>
+    <text x="800" y="670" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="white">📊 Pipeline Performance & Quality Metrics</text>
+    
+    <!-- Left Column -->
+    <text x="80" y="700" font-family="Arial, sans-serif" font-size="11" fill="white">🚀 Build Time: &lt; 5 minutes</text>
+    <text x="80" y="720" font-family="Arial, sans-serif" font-size="11" fill="white">🧪 Test Execution: &lt; 3 minutes</text>
+    <text x="80" y="740" font-family="Arial, sans-serif" font-size="11" fill="white">🔒 Security Scan: &lt; 2 minutes</text>
+    
+    <!-- Center Left -->
+    <text x="400" y="700" font-family="Arial, sans-serif" font-size="11" fill="white">🎯 Success Rate: 98.5%</text>
+    <text x="400" y="720" font-family="Arial, sans-serif" font-size="11" fill="white">📈 Code Coverage: 85%+</text>
+    <text x="400" y="740" font-family="Arial, sans-serif" font-size="11" fill="white">🛡️ Security Score: A+</text>
+    
+    <!-- Center Right -->
+    <text x="720" y="700" font-family="Arial, sans-serif" font-size="11" fill="white">⚡ Deployment Time: &lt; 8 minutes</text>
+    <text x="720" y="720" font-family="Arial, sans-serif" font-size="11" fill="white">🔄 Rollback Time: &lt; 2 minutes</text>
+    <text x="720" y="740" font-family="Arial, sans-serif" font-size="11" fill="white">📊 MTTR: &lt; 15 minutes</text>
+    
+    <!-- Right Column -->
+    <text x="1040" y="700" font-family="Arial, sans-serif" font-size="11" fill="white">🎛️ Infrastructure Drift: Zero</text>
+    <text x="1040" y="720" font-family="Arial, sans-serif" font-size="11" fill="white">💰 Cost Optimization: 65%</text>
+    <text x="1040" y="740" font-family="Arial, sans-serif" font-size="11" fill="white">🌍 Multi-Region: 3 Regions</text>
+    
+    <!-- Far Right -->
+    <text x="1360" y="700" font-family="Arial, sans-serif" font-size="11" fill="white">📈 Uptime: 99.99%</text>
+    <text x="1360" y="720" font-family="Arial, sans-serif" font-size="11" fill="white">⚡ Response: &lt; 100ms P95</text>
+    <text x="1360" y="740" font-family="Arial, sans-serif" font-size="11" fill="white">🔍 Error Rate: &lt; 0.01%</text>
+  </g>
+  
+  <!-- Technology Stack Footer -->
+  <g id="techFooter">
+    <rect x="50" y="800" width="1500" height="80" rx="15" fill="#1a1a1a" filter="url(#dropshadow)"/>
+    <text x="800" y="830" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="white">🛠️ Technology Stack & Tools</text>
+    
+    <text x="80" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">Backend: Spring Boot 3.1.4, PostgreSQL 15, Redis</text>
+    <text x="400" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">Frontend: React 18.2, TypeScript, Material-UI</text>
+    <text x="720" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">DevOps: Jenkins, Docker, Terraform, AWS</text>
+    <text x="1040" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">Monitoring: Grafana, Prometheus, X-Ray</text>
+    <text x="1360" y="855" font-family="Arial, sans-serif" font-size="10" fill="white">Testing: JUnit 5, Mockito, Cypress</text>
+  </g>
+  
+  <!-- Footer -->
+  <text x="800" y="940" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#666">
+    Built with ❤️ by Pratik Mane | Enterprise DevOps Pipeline for Social Media Platform
+  </text>
+  
+  <text x="800" y="960" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#999">
+    🌟 Zero-Downtime Deployments | 🔒 Security-First Approach | 📊 Data-Driven Decisions | ⚡ High Performance
+  </text>
+</svg>
