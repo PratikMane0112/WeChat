@@ -22,7 +22,7 @@
 
 <div align="center">
 
-![System Architecture](./docs/architecture-diagram.svg)
+![System Architecture](https://raw.githubusercontent.com/PratikMane0112/WeChat/master/docs/architecture-diagram.svg)
 
 *Enterprise-grade social media platform with comprehensive DevOps pipeline and AWS cloud infrastructure*
 
@@ -32,7 +32,7 @@
 
 <div align="center">
 
-![Network Architecture](./docs/network-architecture-diagram.svg)
+![Network Architecture](https://raw.githubusercontent.com/PratikMane0112/WeChat/master/docs/network-architecture-diagram.svg)
 
 *Multi-AZ deployment with comprehensive security groups, VPC configuration, and monitoring*
 
@@ -42,7 +42,7 @@
 
 <div align="center">
 
-![DevOps Pipeline](./docs/devops-pipeline-diagram.svg)
+![DevOps Pipeline](https://raw.githubusercontent.com/PratikMane0112/WeChat/master/docs/devops-pipeline-diagram.svg)
 
 *Complete CI/CD pipeline from development to production with monitoring and observability*
 
