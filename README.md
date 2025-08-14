@@ -13,43 +13,6 @@
 [🌐 Live Demo](https://pratik0112-wechat.vercel.app/) • [📚 Documentation](#documentation) • [🚀 Quick Start](#quick-start)
 
 </div>
-
----
-
-## 🏗️ System Architecture Overview
-
-### 📊 **Complete System Architecture**
-
-<div align="center">
-
-![System Architecture](https://raw.githubusercontent.com/PratikMane0112/WeChat/master/docs/architecture-diagram.svg)
-
-*Enterprise-grade social media platform with comprehensive DevOps pipeline and AWS cloud infrastructure*
-
-</div>
-
-### 🌐 **AWS Network & Security Architecture**
-
-<div align="center">
-
-![Network Architecture](https://raw.githubusercontent.com/PratikMane0112/WeChat/master/docs/network-architecture-diagram.svg)
-
-*Multi-AZ deployment with comprehensive security groups, VPC configuration, and monitoring*
-
-</div>
-
-### 🔄 **DevOps Pipeline Architecture**
-
-<div align="center">
-
-![DevOps Pipeline](https://raw.githubusercontent.com/PratikMane0112/WeChat/master/docs/devops-pipeline-diagram.svg)
-
-*Complete CI/CD pipeline from development to production with monitoring and observability*
-
-</div>
-
----
-
 ## 🎯 Project Overview
 
 **Enterprise-grade social media platform** built with Spring Boot and React, featuring real-time messaging, video calling, and comprehensive DevOps automation. Demonstrates production-ready architecture with AWS cloud deployment and CI/CD pipelines.
