@@ -1,0 +1,47 @@
+# Simple Docker Compose Configuration for WeChat Application
+# This file defines how to run the WeChat app with Docker
+
+version: '3.8'
+
+services:
+  # Database service - PostgreSQL
+  database:
+    image: postgres:15
+    container_name: wechat-database
+    environment:
+      POSTGRES_DB: wechat
+      POSTGRES_USER: wechat_user
+      POSTGRES_PASSWORD: wechat_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - database_data:/var/lib/postgresql/data
+
+  # Backend service - Spring Boot API
+  backend:
+    build: ./backend
+    container_name: wechat-backend
+    environment:
+      DATABASE_URL: jdbc:postgresql://database:5432/wechat
+      DB_USERNAME: wechat_user
+      DB_PASSWORD: wechat_password
+      JWT_SECRET: your-jwt-secret-key-here
+    ports:
+      - "8080:8080"
+    depends_on:
+      - database
+
+  # Frontend service - React application
+  frontend:
+    build: ./frontend
+    container_name: wechat-frontend
+    environment:
+      REACT_APP_API_BASE_URL: http://localhost:8080
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+# Volumes to persist database data
+volumes:
+  database_data:

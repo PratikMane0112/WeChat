@@ -1,386 +1,124 @@
+// Simple Jenkins Pipeline for WeChat Application
+// This pipeline builds, tests, and deploys the application
+
 pipeline {
     agent any
     
-    environment {
-        // Docker Hub credentials
-        DOCKER_HUB_CREDENTIALS = credentials('docker-hub-credentials')
-        DOCKER_HUB_REPO = 'pratikmane0112/wechat'
-        
-        // Application versions
-        BACKEND_IMAGE_TAG = "${BUILD_NUMBER}"
-        FRONTEND_IMAGE_TAG = "${BUILD_NUMBER}"
-        
-        // Database credentials
-        DB_CREDENTIALS = credentials('postgres-db-credentials')
-        JWT_SECRET = credentials('jwt-secret')
-        
-        // Email credentials
-        MAIL_CREDENTIALS = credentials('gmail-app-credentials')
-        
-        // Cloudinary credentials
-        CLOUDINARY_CREDENTIALS = credentials('cloudinary-credentials')
-        
-        // ZEGO credentials
-        ZEGO_CREDENTIALS = credentials('zego-credentials')
-    }
-    
+    // Tools needed for the build
     tools {
         maven 'Maven-3.9.0'
         nodejs 'NodeJS-18'
     }
     
     stages {
-        stage('Checkout') {
+        // Step 1: Get the code from repository
+        stage('Checkout Code') {
             steps {
+                echo 'Getting code from repository...'
                 checkout scm
-                script {
-                    // Get commit info for notifications
-                    env.GIT_COMMIT_MSG = sh(
-                        script: 'git log -1 --pretty=%B',
-                        returnStdout: true
-                    ).trim()
-                    env.GIT_AUTHOR = sh(
-                        script: 'git log -1 --pretty=%an',
-                        returnStdout: true
-                    ).trim()
-                }
             }
         }
         
+        // Step 2: Build the backend (Java Spring Boot)
         stage('Build Backend') {
             steps {
+                echo 'Building backend application...'
                 dir('backend') {
-                    script {
-                        echo 'Building Spring Boot application...'
-                        sh 'mvn clean compile'
-                    }
+                    sh 'mvn clean compile'
                 }
             }
         }
         
+        // Step 3: Test the backend
         stage('Test Backend') {
             steps {
+                echo 'Running backend tests...'
                 dir('backend') {
-                    script {
-                        echo 'Running backend tests...'
-                        sh 'mvn test'
-                    }
-                }
-                post {
-                    always {
-                        publishTestResults testResultsPattern: 'backend/target/surefire-reports/*.xml'
-                        publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: true,
-                            keepAll: true,
-                            reportDir: 'backend/target/site/jacoco',
-                            reportFiles: 'index.html',
-                            reportName: 'Backend Code Coverage Report'
-                        ])
-                    }
+                    sh 'mvn test'
                 }
             }
         }
         
+        // Step 4: Package the backend
         stage('Package Backend') {
             steps {
+                echo 'Creating backend JAR file...'
                 dir('backend') {
-                    script {
-                        echo 'Packaging Spring Boot application...'
-                        sh 'mvn package -DskipTests'
-                    }
+                    sh 'mvn package -DskipTests'
                 }
             }
         }
         
+        // Step 5: Build the frontend (React)
         stage('Build Frontend') {
             steps {
+                echo 'Building frontend application...'
                 dir('frontend') {
-                    script {
-                        echo 'Installing frontend dependencies...'
-                        sh 'npm ci'
-                        
-                        echo 'Building React application...'
-                        sh 'npm run build'
-                    }
+                    sh 'npm install'
+                    sh 'npm run build'
                 }
             }
         }
         
+        // Step 6: Test the frontend
         stage('Test Frontend') {
             steps {
+                echo 'Running frontend tests...'
                 dir('frontend') {
-                    script {
-                        echo 'Running frontend tests...'
-                        sh 'npm test -- --coverage --watchAll=false'
-                    }
-                }
-                post {
-                    always {
-                        publishHTML([
-                            allowMissing: false,
-                            alwaysLinkToLastBuild: true,
-                            keepAll: true,
-                            reportDir: 'frontend/coverage/lcov-report',
-                            reportFiles: 'index.html',
-                            reportName: 'Frontend Code Coverage Report'
-                        ])
-                    }
+                    sh 'npm test -- --watchAll=false'
                 }
             }
         }
         
-        stage('Security Scan') {
-            parallel {
-                stage('Backend Security') {
-                    steps {
-                        dir('backend') {
-                            script {
-                                echo 'Running OWASP dependency check...'
-                                sh 'mvn org.owasp:dependency-check-maven:check'
-                            }
-                        }
-                    }
-                }
-                stage('Frontend Security') {
-                    steps {
-                        dir('frontend') {
-                            script {
-                                echo 'Running npm audit...'
-                                sh 'npm audit --audit-level=high'
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        
+        // Step 7: Build Docker images
         stage('Build Docker Images') {
-            parallel {
-                stage('Build Backend Image') {
-                    steps {
-                        script {
-                            echo 'Building backend Docker image...'
-                            def backendImage = docker.build("${DOCKER_HUB_REPO}-backend:${BACKEND_IMAGE_TAG}", 
-                                                           "-f backend/Dockerfile backend/")
-                            
-                            echo 'Pushing backend image to Docker Hub...'
-                            docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                                backendImage.push()
-                                backendImage.push('latest')
-                            }
-                        }
-                    }
+            steps {
+                echo 'Building Docker images...'
+                
+                // Build backend Docker image
+                script {
+                    def backendImage = docker.build("wechat-backend:${BUILD_NUMBER}", "./backend")
                 }
-                stage('Build Frontend Image') {
-                    steps {
-                        script {
-                            echo 'Building frontend Docker image...'
-                            def frontendImage = docker.build("${DOCKER_HUB_REPO}-frontend:${FRONTEND_IMAGE_TAG}", 
-                                                            "-f frontend/Dockerfile frontend/")
-                            
-                            echo 'Pushing frontend image to Docker Hub...'
-                            docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {
-                                frontendImage.push()
-                                frontendImage.push('latest')
-                            }
-                        }
-                    }
+                
+                // Build frontend Docker image
+                script {
+                    def frontendImage = docker.build("wechat-frontend:${BUILD_NUMBER}", "./frontend")
                 }
             }
         }
         
-        stage('Deploy to Staging') {
-            when {
-                branch 'develop'
-            }
+        // Step 8: Deploy the application
+        stage('Deploy Application') {
             steps {
-                script {
-                    echo 'Deploying to staging environment...'
-                    sh '''
-                        # Update docker-compose for staging
-                        envsubst < docker-compose.staging.yml > docker-compose.temp.yml
-                        
-                        # Deploy to staging
-                        docker-compose -f docker-compose.temp.yml down
-                        docker-compose -f docker-compose.temp.yml up -d
-                        
-                        # Wait for services to be ready
-                        sleep 30
-                        
-                        # Health check
-                        curl -f http://staging.wechat.local/health || exit 1
-                    '''
-                }
-            }
-        }
-        
-        stage('Deploy to Production') {
-            when {
-                branch 'master'
-            }
-            steps {
-                script {
-                    echo 'Deploying to production environment...'
-                    
-                    // Deployment approval
-                    input message: 'Deploy to production?', 
-                          ok: 'Deploy',
-                          submitterParameter: 'DEPLOYER'
-                    
-                    sh '''
-                        # Update docker-compose for production
-                        envsubst < docker-compose.prod.yml > docker-compose.temp.yml
-                        
-                        # Blue-Green deployment
-                        docker-compose -f docker-compose.temp.yml up -d --scale backend=2 --scale frontend=2
-                        
-                        # Wait for new instances to be ready
-                        sleep 60
-                        
-                        # Health check
-                        curl -f http://wechat.local/health || exit 1
-                        
-                        # Scale down old instances
-                        docker-compose -f docker-compose.temp.yml up -d --scale backend=1 --scale frontend=1
-                    '''
-                }
-            }
-        }
-        
-        stage('Integration Tests') {
-            when {
-                anyOf {
-                    branch 'develop'
-                    branch 'master'
-                }
-            }
-            steps {
-                script {
-                    echo 'Running integration tests...'
-                    dir('backend') {
-                        sh 'mvn test -Dtest=**/*IntegrationTest'
-                    }
-                }
+                echo 'Deploying application with Docker Compose...'
+                sh 'docker-compose down'
+                sh 'docker-compose up -d'
             }
         }
     }
     
+    // What to do when the pipeline finishes
     post {
         always {
+            echo 'Pipeline finished!'
             // Clean up workspace
             cleanWs()
-            
-            // Archive artifacts
-            archiveArtifacts artifacts: 'backend/target/*.jar,frontend/build/**/*', 
-                           fingerprint: true
-        }
-        
-        success {
-            script {
-                // Send success notification
-                slackSend(
-                    channel: '#deployments',
-                    color: 'good',
-                    message: """
-                        ✅ *WeChat Deployment Successful*
-                        
-                        *Branch:* ${env.BRANCH_NAME}
-                        *Build:* ${env.BUILD_NUMBER}
-                        *Commit:* ${env.GIT_COMMIT_MSG}
-                        *Author:* ${env.GIT_AUTHOR}
-                        *Duration:* ${currentBuild.durationString}
-                        
-                        *Docker Images:*
-                        • Backend: ${DOCKER_HUB_REPO}-backend:${BACKEND_IMAGE_TAG}
-                        • Frontend: ${DOCKER_HUB_REPO}-frontend:${FRONTEND_IMAGE_TAG}
-                    """
-                )
-                
-                // Email notification
-                emailext(
-                    subject: "✅ WeChat Build #${BUILD_NUMBER} - SUCCESS",
-                    body: """
-                        <h2>Build Successful!</h2>
-                        <p><strong>Project:</strong> WeChat Social Platform</p>
-                        <p><strong>Branch:</strong> ${env.BRANCH_NAME}</p>
-                        <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
-                        <p><strong>Commit:</strong> ${env.GIT_COMMIT_MSG}</p>
-                        <p><strong>Author:</strong> ${env.GIT_AUTHOR}</p>
-                        <p><strong>Duration:</strong> ${currentBuild.durationString}</p>
-                        
-                        <h3>Deployed Images:</h3>
-                        <ul>
-                            <li>Backend: ${DOCKER_HUB_REPO}-backend:${BACKEND_IMAGE_TAG}</li>
-                            <li>Frontend: ${DOCKER_HUB_REPO}-frontend:${FRONTEND_IMAGE_TAG}</li>
-                        </ul>
-                        
-                        <p><a href="${BUILD_URL}">View Build Details</a></p>
-                    """,
-                    mimeType: 'text/html',
-                    to: 'team@wechat.com'
-                )
-            }
         }
         
         failure {
-            script {
-                // Send failure notification
-                slackSend(
-                    channel: '#deployments',
-                    color: 'danger',
-                    message: """
-                        ❌ *WeChat Deployment Failed*
-                        
-                        *Branch:* ${env.BRANCH_NAME}
-                        *Build:* ${env.BUILD_NUMBER}
-                        *Commit:* ${env.GIT_COMMIT_MSG}
-                        *Author:* ${env.GIT_AUTHOR}
-                        *Duration:* ${currentBuild.durationString}
-                        
-                        *Error:* Check console output for details
-                        *Build URL:* ${BUILD_URL}
-                    """
-                )
+            echo '❌ Build or deployment failed!'
+            // Send failure email notification
+            emailext (
+                subject: "❌ WeChat Build #${BUILD_NUMBER} - FAILED",
+                body: """
+                <h2>Build Failed! ⚠️</h2>
                 
-                // Email notification
-                emailext(
-                    subject: "❌ WeChat Build #${BUILD_NUMBER} - FAILED",
-                    body: """
-                        <h2>Build Failed!</h2>
-                        <p><strong>Project:</strong> WeChat Social Platform</p>
-                        <p><strong>Branch:</strong> ${env.BRANCH_NAME}</p>
-                        <p><strong>Build Number:</strong> ${env.BUILD_NUMBER}</p>
-                        <p><strong>Commit:</strong> ${env.GIT_COMMIT_MSG}</p>
-                        <p><strong>Author:</strong> ${env.GIT_AUTHOR}</p>
-                        <p><strong>Duration:</strong> ${currentBuild.durationString}</p>
-                        
-                        <p>Please check the console output for error details.</p>
-                        <p><a href="${BUILD_URL}console">View Console Output</a></p>
-                    """,
-                    mimeType: 'text/html',
-                    to: 'team@wechat.com'
-                )
-            }
-        }
-        
-        unstable {
-            script {
-                slackSend(
-                    channel: '#deployments',
-                    color: 'warning',
-                    message: """
-                        ⚠️ *WeChat Build Unstable*
-                        
-                        *Branch:* ${env.BRANCH_NAME}
-                        *Build:* ${env.BUILD_NUMBER}
-                        *Duration:* ${currentBuild.durationString}
-                        
-                        Some tests may have failed. Please review.
-                        *Build URL:* ${BUILD_URL}
-                    """
-                )
-            }
+                <p>The WeChat application build or deployment has failed.</p>
+                
+                """,
+                mimeType: 'text/html',
+                to: "pratikmane610@gmail.com"
+            )
         }
     }
 }
