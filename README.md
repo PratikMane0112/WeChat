@@ -138,6 +138,10 @@ cd frontend
 npm install
 npm start
 ```
+## 🔨 Architecture
+![jenkins-pipeline-flow](https://github.com/user-attachments/assets/cd3be48e-8b6e-42be-93e9-91de74348aa0)
+
+
 
 ## 👨‍💻 Author
 
